@@ -16,25 +16,9 @@ def cargar():
         with open("datos.json", "r") as f:
             return json.load(f)
     except:
+        with open("datos.json", "w") as f:
+            json.dump({}, f)
         return {}
-
-def guardar(data):
-    with open("datos.json", "w") as f:
-        json.dump(data, f, indent=4)
-
-def hoy():
-    return datetime.now().strftime("%Y-%m-%d")
-
-def asegurar_usuario(data, user):
-    if user not in data:
-        data[user] = {
-            "apm": {"puntos": 0, "record": 0, "ultimo_envio": ""},
-            "key": {"puntos": 0, "record": 0, "ultimo_envio": ""},
-            "aim": {"puntos": 0, "record": 0, "ultimo_envio": ""}
-        }
-
-def puede_enviar(data, user, tipo):
-    return data[user][tipo]["ultimo_envio"] != hoy()
 
 
 # ---------------- COMANDOS ---------------- #
