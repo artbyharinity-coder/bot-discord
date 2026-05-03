@@ -231,4 +231,5 @@ async def on_ready():
     print(f"Bot conectado como {bot.user}")
 
 
+import os
 bot.run(os.getenv("TOKEN"))
